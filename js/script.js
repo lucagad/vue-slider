@@ -46,35 +46,41 @@ const app = new Vue ({
     data:{
 
         index: 0,
+        autoSlider: false,
         images :[
             {
                 imgUrl: 'img/01.jpg',
                 title: 'Svezia',
-                text: 'Svezia - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                text: 'Svezia - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                imgActive: "active"
             },
 
             {
                 imgUrl: 'img/02.jpg',
                 title: 'Svizzera',
-                text: 'Svizzera - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                text: 'Svizzera - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                imgActive: ""
             },
 
             {
                 imgUrl: 'img/03.jpg',
                 title: 'Gran Bretagna',
-                text: 'Gran Bretagna - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                text: 'Gran Bretagna - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                imgActive: ""
             },
 
             {
                 imgUrl: 'img/04.jpg',
                 title: 'Germania',
-                text: 'Germania - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                text: 'Germania - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                imgActive: ""
             },
 
             {
                 imgUrl: 'img/05.jpg',
                 title: 'Paradise',
-                text: 'Paradise - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                text: 'Paradise - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
+                imgActive: ""
             },
         ],
 
@@ -85,13 +91,17 @@ const app = new Vue ({
 
         nextImage(){
 
+            this.images[this.index].imgActive = "";
+
             if(this.index < this.images.length - 1){
 
                 this.index++;
+                this.images[this.index].imgActive = "active";
 
             } else {
 
                 this.index = 0;
+                this.images[this.index].imgActive = "active";
 
             }
 
@@ -101,18 +111,33 @@ const app = new Vue ({
 
         prevImage(){
 
-            this.index--;
+            if(this.index <= 0){
 
-            if(this.index < 0){
-
+                this.images[0].imgActive = "";
                 this.index = this.images.length - 1;
+                this.images[this.index].imgActive = "active";
 
+            } else {
+
+                this.images[this.index].imgActive = "";
+                this.index--;
+                this.images[this.index].imgActive = "active";
+    
             }
 
             console.log(this.index);
 
         }
 
+    },
+
+    mounted(){
+        // BONUS 1
+        setInterval(() => {
+            if(this.autoSlider === true){
+                this.nextImage();
+            }
+        }, 3000);
     }
 
 });
