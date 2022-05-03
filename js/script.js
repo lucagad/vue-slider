@@ -46,7 +46,7 @@ const app = new Vue ({
     data:{
 
         index: 0,
-        autoSlider: false,
+        autoSlider: true,
         images :[
             {
                 imgUrl: 'img/01.jpg',
@@ -127,6 +127,24 @@ const app = new Vue ({
 
             console.log(this.index);
 
+        },
+
+        clickedThumb(indexImg){
+
+            for (let ind = 0; ind < this.images.length; ind++) {
+                
+                if(ind === indexImg){
+
+                    this.images[ind].imgActive = "active";
+                    this.index = ind;
+                } else {
+
+                    this.images[ind].imgActive = "";
+
+                }
+
+            }
+            
         }
 
     },

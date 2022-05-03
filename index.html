@@ -28,10 +28,17 @@
                     <div @click="prevImage()" class="prev"></div>
                     <div @click="nextImage()" class="next"></div>
                     
-                    <div v-for="image in images" class="thumb" :class="[image.imgActive]">
+                    <div 
+                        @mouseover="autoSlider = false"
+                        @mouseleave="autoSlider = true" 
+                        @click="clickedThumb(imgIndex)" 
+                        v-for="(image, imgIndex) in images" 
+                        class="thumb" 
+                        :class="[image.imgActive]"
+                    >
                         <img :src="[image.imgUrl]" :alt="[image.title]" />
                     </div> 
-                    
+
                 </div>
 
             </div>
