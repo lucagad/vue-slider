@@ -51,38 +51,32 @@ const app = new Vue ({
                 imgUrl: 'img/01.jpg',
                 title: 'Svezia',
                 text: 'Svezia - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-                imgActive: "active"
             },
 
             {
                 imgUrl: 'img/02.jpg',
                 title: 'Svizzera',
                 text: 'Svizzera - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-                imgActive: ""
             },
 
             {
                 imgUrl: 'img/03.jpg',
                 title: 'Gran Bretagna',
                 text: 'Gran Bretagna - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-                imgActive: ""
             },
 
             {
                 imgUrl: 'img/04.jpg',
                 title: 'Germania',
                 text: 'Germania - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-                imgActive: ""
             },
 
             {
                 imgUrl: 'img/05.jpg',
                 title: 'Paradise',
                 text: 'Paradise - Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti autveniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.',
-                imgActive: ""
             },
         ],
-
 
     },
 
@@ -90,17 +84,13 @@ const app = new Vue ({
 
         nextImage(){
 
-            this.images[this.index].imgActive = "";
-
             if(this.index < this.images.length - 1){
 
                 this.index++;
-                this.images[this.index].imgActive = "active";
 
             } else {
 
                 this.index = 0;
-                this.images[this.index].imgActive = "active";
 
             }
 
@@ -112,15 +102,11 @@ const app = new Vue ({
 
             if(this.index <= 0){
 
-                this.images[0].imgActive = "";
                 this.index = this.images.length - 1;
-                this.images[this.index].imgActive = "active";
 
             } else {
 
-                this.images[this.index].imgActive = "";
                 this.index--;
-                this.images[this.index].imgActive = "active";
     
             }
 
@@ -134,18 +120,10 @@ const app = new Vue ({
                 
                 if(ind === indexImg){
 
-                    this.images[ind].imgActive = "active";
                     this.index = ind;
-                } else {
-
-                    this.images[ind].imgActive = "";
-
-                }
-
+                } 
             }
-            
         }
-
     },
 
     mounted(){
